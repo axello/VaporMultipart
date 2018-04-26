@@ -1,3 +1,9 @@
+This is an extraction of a new implementation of chapter 5 of Paul Hudson's Vapor 3 book. 
+
+I suspect there is an error in the handling of multiple uploaded files.
+
+
+
 # Vapor Clean
 
 This is a template for Vapor 3 users that does the absolute minimum to set up a working Vapor 3 environment.
