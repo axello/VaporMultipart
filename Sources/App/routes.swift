@@ -27,6 +27,22 @@ public func routes(_ router: Router) throws {
     // single ImageFile, multiple files
     router.post("upload") { req -> Future<Response> in
         struct ImageFile : Content {
+            var upload: File
+        }
+        return try req.content.decode(ImageFile.self).map(to: Response.self, { forms in
+            let file = forms.upload
+            print(file.filename)
+            let newURL = originalsDirectory.appendingPathComponent("\(file.filename).png")
+            print(newURL)
+            
+            _ = try? file.data.write(to: newURL)
+            return req.redirect(to: "/", type: RedirectType.normal)          //.redirect(to: "/", [:])
+        })
+    }
+
+    // single ImageFile, multiple files
+    router.post("multiple") { req -> Future<Response> in
+        struct ImageFile : Content {
             var upload: [File]
         }
         return try req.content.decode(ImageFile.self).map(to: Response.self, { forms in
@@ -37,7 +53,7 @@ public func routes(_ router: Router) throws {
             }
             for file in forms.upload {
                 print(file.filename)
-                let newURL = originalsDirectory.appendingPathComponent("wtf_\(file.filename).png")
+                let newURL = originalsDirectory.appendingPathComponent("multi_\(file.filename).png")
                 print(newURL)
 
                 _ = try? file.data.write(to: newURL)

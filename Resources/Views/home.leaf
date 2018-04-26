@@ -11,6 +11,12 @@
     <p><input type="file" name="upload" multiple/></p>
     <p><button type="submit" class="btn">Upload</button></p>
     </form>
+
+    <form method="post" action="/multiple" enctype="multipart/form-data">
+    <p><input type="file" name="upload" multiple/></p>
+    <p><button type="submit" class="btn">Multiple Upload</button></p>
+    </form>
+
 }
 
 #embed("master")
