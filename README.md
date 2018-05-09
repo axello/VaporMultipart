@@ -2,6 +2,7 @@ This is an extraction of a new implementation of chapter 5 of Paul Hudson's Vapo
 
 I suspect there is an error in the handling of multiple uploaded files.
 
+Yep, there was. I now added [] to the upload name and everything is hunky-dory in upload land.
 
 
 # Vapor Clean
